@@ -218,6 +218,7 @@
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\weekly.ico" />
     <Image Include="..\..\..\..\Downloads\weekly.png" />
+    <Image Include="res\img\above-art-background-black.jpg" />
     <Image Include="res\img\add.png" />
     <Image Include="res\img\delete.png" />
     <Image Include="res\img\edit.png" />

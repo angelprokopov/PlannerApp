@@ -1,7 +1,9 @@
 #include "pch.h"
+#include "PlannerAppDlg.h"
 #include "CAddTaskDlg.h"
 #include "afxdialogex.h"
 #include "resource.h"
+#include "afxdb.h"
 
 IMPLEMENT_DYNAMIC(CAddTaskDlg, CDialogEx)
 
@@ -30,6 +32,17 @@ END_MESSAGE_MAP()
 BOOL CAddTaskDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 	
+	try
+	{
+		m_db.OpenEx(_T("DSN=PlannerDSN"), CDatabase::noOdbcDialog);
+	}
+	catch (CDBException* ex)
+	{
+		AfxMessageBox(ex->m_strError);
+		ex->Delete();
+	}
+
+
 	m_TaskCategory.AddString(_T("Personal"));
 	m_TaskCategory.AddString(_T("Work"));
 	m_TaskCategory.AddString(_T("Other"));
@@ -41,9 +54,50 @@ BOOL CAddTaskDlg::OnInitDialog() {
 }
 
 void CAddTaskDlg::OnBtnClickedSave() {
+	CString title, category, description;
+	COleDateTime dueDate;
 
+	m_TaskTitle.GetWindowText(title);
+	m_TaskCategory.GetWindowText(category);
+	m_TaskDueDate.GetTime(dueDate);
+	m_TaskDescription.GetWindowText(description);
+
+	if (title.IsEmpty()) {
+		AfxMessageBox(_T("Title cannot be empty"));
+		return;
+	}
+	
+	try
+	{
+		CString query;
+		query.Format(_T("insert into Tasks (Title, Category, DueDate, Description) values ('%s','%s','%s','%s');"),
+			title,category,dueDate.Format(_T("%d-%m-%Y %H:%M:%S")), description);
+
+		m_db.ExecuteSQL(query);
+
+		CDialogEx* pParent = (CDialogEx*)GetParent();
+		if (pParent != nullptr) {
+			pParent->SendMessage(WM_USER_REFRESH_TASKS, 0, 0);
+		}
+
+		AfxMessageBox(_T("Task saved successfully"));
+		EndDialog(IDOK);
+	}
+	catch (CDBException* e)
+	{
+		AfxMessageBox(e->m_strError);
+		e->Delete();
+	}
 }
 
 void CAddTaskDlg::OnBtnClickedCancel() {
 	EndDialog(IDCANCEL);
+}
+
+void CAddTaskDlg::OnDestroy() {
+	if (m_db.IsOpen()) {
+		m_db.Close();
+	}
+
+	CDialogEx::OnDestroy();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "afxwin.h"
+#include "afxdb.h"
 
 class CAddTaskDlg : public CDialogEx {
 	
@@ -16,6 +17,8 @@ public:
 protected:
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);
+	afx_msg void OnDestroy();
+	CDatabase m_db;
 
 	CEdit m_TaskTitle;
 	CComboBox m_TaskCategory;

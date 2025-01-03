@@ -13,6 +13,7 @@
 #define IDD_ADD_TASK_DIALOG             139
 #define IDD_DIALOG1                     141
 #define IDD_EDIT_TASK_DIALOG            141
+#define IDD_DIALOG2                     145
 #define IDC_ADD_TASK                    1000
 #define IDC_EDIT_TASK                   1001
 #define IDC_DELETE_TASK                 1002
@@ -25,14 +26,16 @@
 #define IDC_EDIT_CATEGORY               1008
 #define IDC_EDIT_DUEDATE                1009
 #define IDC_EDIT_DESCRIPTION            1010
+#define IDC_TASK_LIST                   1012
+#define IDC_RICHEDIT21                  1020
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        143
+#define _APS_NEXT_RESOURCE_VALUE        147
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1011
+#define _APS_NEXT_CONTROL_VALUE         1024
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
