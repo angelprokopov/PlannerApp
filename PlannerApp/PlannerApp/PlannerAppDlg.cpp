@@ -55,7 +55,7 @@ END_MESSAGE_MAP()
 CPlannerAppDlg::CPlannerAppDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_PLANNERAPP_DIALOG, pParent)
 {
-	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hIcon = AfxGetApp()->LoadIcon(IDR_PLANNER_ICON);
 }
 
 void CPlannerAppDlg::DoDataExchange(CDataExchange* pDX)
@@ -80,6 +80,18 @@ END_MESSAGE_MAP()
 
 // CPlannerAppDlg message handlers
 
+BOOL CPlannerAppDlg::PreTranslateMessage(MSG* pMsg) {
+	if (pMsg->message == WM_KEYDOWN)
+	{
+		if (pMsg->wParam == VK_RETURN || pMsg->wParam == VK_ESCAPE)
+		{
+			return TRUE;
+		}
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
 BOOL CPlannerAppDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -89,11 +101,6 @@ BOOL CPlannerAppDlg::OnInitDialog()
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
-
-	HRESULT hResult = m_bgImage.Load(_T("res\\img\\above-art-background-black.jpg"));
-	if (FAILED(hResult)) {
-		AfxMessageBox(_T("Failed to load background image"));
-	}
 
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != nullptr)
@@ -233,6 +240,7 @@ void CPlannerAppDlg::OnBtnClickedAddTask() {
 void CPlannerAppDlg::OnBtnClickedEditTask() {
 	int selectedRow = m_TaskListCtrl.GetSelectionMark();
 	if (selectedRow == -1) {
+		AfxMessageBox(_T("Please select a task for edit"));
 		return;
 	}
 
@@ -414,12 +422,11 @@ void CPlannerAppDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		if (!m_bgImage.IsNull()) {
-			m_bgImage.Draw(dc.m_hDC, rect);
-		}
-		else {
-			CDialogEx::OnPaint();
-		}
+		Gdiplus::Graphics graphis(dc.m_hDC);
+		Gdiplus::Image image(L"res\\above-art-background-black.png");
+
+		graphis.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+		graphis.DrawImage(&image, 0, 0, rect.Width(), rect.Height());
 
 		// Draw the icon
 		dc.DrawIcon(x, y, m_hIcon);

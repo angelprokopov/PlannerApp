@@ -218,11 +218,18 @@
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\weekly.ico" />
     <Image Include="..\..\..\..\Downloads\weekly.png" />
-    <Image Include="res\img\above-art-background-black.jpg" />
+    <Image Include="res\above-art-background-black.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="res\add_task.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="res\edit_task.jpg" />
     <Image Include="res\img\add.png" />
     <Image Include="res\img\delete.png" />
     <Image Include="res\img\edit.png" />
     <Image Include="res\PlannerApp.ico" />
+    <Image Include="res\weekly.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

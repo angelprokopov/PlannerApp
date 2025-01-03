@@ -4,13 +4,12 @@
 #include "PlannerAppDlg.h"
 
 
-
 IMPLEMENT_DYNAMIC(CEditTaskDlg, CDialogEx)
 
 CEditTaskDlg::CEditTaskDlg(CWnd* pArent) : CDialogEx(IDD_EDIT_TASK_DIALOG, pArent){}
 
 CEditTaskDlg::~CEditTaskDlg() {
-
+	GdiplusShutdown(m_gdiplusToken);
 }
 
 void CEditTaskDlg::DoDataExchange(CDataExchange* pDX) {
@@ -25,12 +24,37 @@ void CEditTaskDlg::DoDataExchange(CDataExchange* pDX) {
 }
 
 BEGIN_MESSAGE_MAP(CEditTaskDlg,CDialogEx)
+	ON_WM_PAINT()
+	ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDOK, &CEditTaskDlg::OnBtnClickedSave)
 	ON_BN_CLICKED(IDCANCEL, &CEditTaskDlg::OnBtnClickedCancel)
 END_MESSAGE_MAP()
 
+HBRUSH CEditTaskDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) {
+	if (nCtlColor == CTLCOLOR_STATIC)
+	{
+		pDC->SetBkMode(TRANSPARENT);
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	}
+
+	return CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+}
+
 BOOL CEditTaskDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
+
+	m_labelFont.CreateFont(18, 0, 0, 0, FW_BOLD, FALSE, FALSE, 0, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Segoe UI"));
+
+	GetDlgItem(IDC_TITLE_LABEL)->SetFont(&m_labelFont);
+	GetDlgItem(IDC_CATEGORY_LABEL)->SetFont(&m_labelFont);
+	GetDlgItem(IDC_DUEDATE_LABEL)->SetFont(&m_labelFont);
+	GetDlgItem(IDC_DESCRIPTION_LABEL)->SetFont(&m_labelFont);
+
+
+	GdiplusStartupInput gdiplusStartInput;
+	GdiplusStartup(&m_gdiplusToken, &gdiplusStartInput, nullptr);
+
+
 
 	m_Title.SetWindowText(m_taskTitle);
 	m_Category.AddString(_T("Other"));
@@ -52,34 +76,69 @@ void CEditTaskDlg::SetTaskData(const CString& id,const CString& title, const CSt
 }
 
 void CEditTaskDlg::OnBtnClickedSave() {
-	GetDlgItemText(IDC_EDIT_TASK, m_taskTitle);
-	GetDlgItemText(IDC_EDIT_CATEGORY, m_taskCategory);
-	GetDlgItemText(IDC_EDIT_DESCRIPTION, m_taskDescription);
+	CString updatedTitle, updatedCategory, updatedDescription;
+	COleDateTime updatedDueDate;
 
-	CDateTimeCtrl* pDateTimeCtrl = (CDateTimeCtrl*)GetDlgItem(IDC_EDIT_DUEDATE);
-	if (pDateTimeCtrl) {
-		pDateTimeCtrl->GetTime(m_taskDueDate);
+	GetDlgItemText(IDC_EDIT_TITLE, updatedTitle);
+	GetDlgItemText(IDC_EDIT_CATEGORY, updatedCategory);
+	GetDlgItemText(IDC_EDIT_DESCRIPTION, updatedDescription);
+
+	CDateTimeCtrl* pDateCtrl = (CDateTimeCtrl*)GetDlgItem(IDC_EDIT_DUEDATE);
+	pDateCtrl->GetTime(updatedDueDate);
+
+	if (updatedTitle.IsEmpty())
+	{
+		AfxMessageBox(_T("Title cannot be empty"));
+		return;
 	}
+
 	try
 	{
 		if (!m_db.IsOpen()) {
-			CPlannerAppDlg* pParent = dynamic_cast<CPlannerAppDlg*>(GetParent());
-			if (pParent) {
-				pParent->ConnectToDatabase();
-			}
+			AfxMessageBox(_T(""));
+			return;
 		}
 
-		CString query;
-		query.Format(_T("update Tasks set Title = '%s', Category = '%s', DueDate = '%s', Description = '%s' where TaskId = '%s'"), m_taskTitle, m_taskCategory, m_taskDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), m_taskDescription, m_TaskId);
-		m_db.ExecuteSQL(query);
+		CString updateQuery;
+		updateQuery.Format(_T("update Tasks set Title = '%s, Category = '%s', DueDate = '%s', Description = '%s' where TaskId = %d"), updatedTitle, updatedCategory, updatedDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), updatedDescription, m_TaskId);
 
-		EndDialog(IDOK);
+		m_db.ExecuteSQL(updateQuery);
+
+		CDialogEx::OnOK();
 	}
 	catch (CDBException* ex)
 	{
 		AfxMessageBox(ex->m_strError);
 		ex->Delete();
 	}
+}
+
+void CEditTaskDlg::OnPaint() {
+	CPaintDC dc(this);
+	
+	CRect rect;
+	GetClientRect(&rect);
+
+	Gdiplus::Graphics graphis(dc.m_hDC);
+	Gdiplus::Image image(L"res\\add_task.jpg");
+
+	/*int imgWidth = m_bgImage.GetWidth();
+	int imgHeight = m_bgImage.GetHeight();
+
+	float xScale = static_cast<float>(rect.Width()) / imgWidth;
+	float yScale = static_cast<float>(rect.Height()) / imgHeight;
+	float scale = min(xScale, yScale);
+
+	int newWidth = static_cast<int>(imgWidth * scale);
+	int newHeight = static_cast<int>(imgHeight * scale);
+
+	int xOffset = (rect.Width() - newWidth) / 2;
+	int yOffset = (rect.Height() - newHeight) / 2;*/
+
+
+	graphis.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+	graphis.DrawImage(&image, 0, 0, rect.Width(), rect.Height());
+	
 }
 
 void CEditTaskDlg::OnBtnClickedCancel() {

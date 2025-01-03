@@ -6,6 +6,9 @@
 #include <afxdtctl.h>
 #include <afxbutton.h>
 #include "afxdb.h"
+#include <atlimage.h>
+#include <gdiplus.h>
+using namespace Gdiplus;
 
 class CEditTaskDlg : public CDialogEx
 {
@@ -16,13 +19,22 @@ public:
 	virtual ~CEditTaskDlg();
 
 	void SetTaskData(const CString& id,const CString& title, const CString& category, const COleDateTime& dueDate,const CString description);
+
 #ifdef AFX_DESIGN_TIME
 	enum {IDD = IDD_EDIT_TASK_DIALOG};
 #endif // AFX_DESIGN_TIME
 
+private:
+	ULONG_PTR m_gdiplusToken;
+	CImage m_bgImage;
+	CBrush m_bgBrush;
+	CFont m_labelFont;
+
 protected:
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);
+	afx_msg void OnPaint();
+	afx_msg HBRUSH OnCtlColor(CDC* pDc, CWnd* pWnd, UINT nCtlColor);
 
 	DECLARE_MESSAGE_MAP()
 

@@ -8,6 +8,8 @@
 #include "CAddTaskDlg.h"
 #include <shellapi.h>
 #include "afxdb.h"
+#include <gdiplus.h>
+using namespace Gdiplus;
 
 #pragma once
 
@@ -25,6 +27,9 @@ public:
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_PLANNERAPP_DIALOG };
 #endif
+
+private:
+	ULONG_PTR m_gdiplusToken;
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
@@ -57,7 +62,7 @@ protected:
 	afx_msg void OnDestroy();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
-	//virtual BOOL OnEraseBkgnd(CDC* pDC);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg LRESULT OnRefreshTask(WPARAM wParam, LPARAM lParam);

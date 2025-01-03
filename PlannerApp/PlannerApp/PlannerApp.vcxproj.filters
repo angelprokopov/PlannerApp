@@ -92,7 +92,16 @@
     <Image Include="..\..\..\..\Downloads\weekly.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\img\above-art-background-black.jpg">
+    <Image Include="res\above-art-background-black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\weekly.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\add_task.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\edit_task.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

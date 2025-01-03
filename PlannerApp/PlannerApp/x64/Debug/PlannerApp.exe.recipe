@@ -5,7 +5,14 @@
       <FullPath>C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\res\above-art-background-black.png</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\res\add_task.jpg</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>
