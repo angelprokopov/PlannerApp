@@ -22,6 +22,7 @@ class CPlannerAppDlg : public CDialogEx
 // Construction
 public:
 	CPlannerAppDlg(CWnd* pParent = nullptr);	// standard constructor
+	virtual ~CPlannerAppDlg();
 	afx_msg BOOL ConnectToDatabase();
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -30,12 +31,12 @@ public:
 
 private:
 	ULONG_PTR m_gdiplusToken;
+	NOTIFYICONDATA m_notifyIconData;
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 	std::vector<Task> taskList;
-	NOTIFYICONDATA m_NotifyIconData;
 
 	CMFCButton m_addButton;
 	CMFCButton m_editButton;
@@ -62,9 +63,11 @@ protected:
 	afx_msg void OnDestroy();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
+	virtual BOOL OnEraseBkgnd(CDC* pDC);
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg HCURSOR OnQueryDragIcon();
+	afx_msg HBRUSH OnCtlColor(CDC* pDc, CWnd* pWnd, UINT nCtlColor);
 	afx_msg LRESULT OnRefreshTask(WPARAM wParam, LPARAM lParam);
 	afx_msg void ShowNotification(const CString& message);
 	afx_msg void OnBtnClickedAddTask();

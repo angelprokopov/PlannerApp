@@ -225,9 +225,13 @@
       <DeploymentContent>true</DeploymentContent>
     </Image>
     <Image Include="res\edit_task.jpg" />
+    <Image Include="res\images.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="res\img\add.png" />
     <Image Include="res\img\delete.png" />
     <Image Include="res\img\edit.png" />
+    <Image Include="res\img_bg.jpg" />
     <Image Include="res\PlannerApp.ico" />
     <Image Include="res\weekly.ico" />
   </ItemGroup>

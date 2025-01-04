@@ -10,6 +10,8 @@
 #include "afxdb.h"
 #include "afxvisualmanagerwindows.h"
 #include "CEditTaskDlg.h"
+#include <gdiplus.h>
+using namespace Gdiplus;
 
 
 #ifdef _DEBUG
@@ -50,7 +52,9 @@ END_MESSAGE_MAP()
 
 // CPlannerAppDlg dialog
 
-
+CPlannerAppDlg::~CPlannerAppDlg() {
+	GdiplusShutdown(m_gdiplusToken);
+}
 
 CPlannerAppDlg::CPlannerAppDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_PLANNERAPP_DIALOG, pParent)
@@ -72,6 +76,7 @@ BEGIN_MESSAGE_MAP(CPlannerAppDlg, CDialogEx)
 	ON_WM_ERASEBKGND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDC_ADD_TASK, &CPlannerAppDlg::OnBtnClickedAddTask)
 	ON_BN_CLICKED(IDC_EDIT_TASK, &CPlannerAppDlg::OnBtnClickedEditTask)
 	ON_BN_CLICKED(IDC_DELETE_TASK, &CPlannerAppDlg::OnBtnClickedDeleteTask)
@@ -96,6 +101,9 @@ BOOL CPlannerAppDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	GdiplusStartupInput gdiplusStartInput;
+	GdiplusStartup(&m_gdiplusToken, &gdiplusStartInput, nullptr);
+
 	// Add "About..." menu item to system menu.
 
 	// IDM_ABOUTBOX must be in the system command range.
@@ -109,7 +117,7 @@ BOOL CPlannerAppDlg::OnInitDialog()
 		CString strAboutMenu;
 		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);
 		ASSERT(bNameValid);
-		if (!strAboutMenu.IsEmpty())
+		if (!strAboutMenu.IsEmpty())	
 		{
 			pSysMenu->AppendMenu(MF_SEPARATOR);
 			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
@@ -160,16 +168,16 @@ BOOL CPlannerAppDlg::OnInitDialog()
 	m_deleteButton.SetWindowText(_T("Delete task"));
 
 
-	memset(&m_NotifyIconData, 0, sizeof(m_NotifyIconData));
-	m_NotifyIconData.cbSize = sizeof(NOTIFYICONDATA);
-	m_NotifyIconData.hWnd = this->GetSafeHwnd();
-	m_NotifyIconData.uID = 1;
-	m_NotifyIconData.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
-	m_NotifyIconData.uCallbackMessage = WM_APP + 1;
-	m_NotifyIconData.hIcon = AfxGetApp()->LoadIconW(IDR_MAINFRAME);
-	wcscpy_s(m_NotifyIconData.szTip, L"Planner App");
+	memset(&m_notifyIconData, 0, sizeof(m_notifyIconData));
+	m_notifyIconData.cbSize = sizeof(NOTIFYICONDATA);
+	m_notifyIconData.hWnd = this->GetSafeHwnd();
+	m_notifyIconData.uID = 1;
+	m_notifyIconData.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+	m_notifyIconData.uCallbackMessage = WM_APP + 1;
+	m_notifyIconData.hIcon = AfxGetApp()->LoadIconW(IDR_PLANNER_ICON);
+	wcscpy_s(m_notifyIconData.szTip, L"Planner App");
 
-	Shell_NotifyIcon(NIM_ADD, &m_NotifyIconData);
+	Shell_NotifyIcon(NIM_ADD, &m_notifyIconData);
 
 	// Set the icon for this dialog.  The framework does this automatically
 	//  when the application's main window is not a dialog
@@ -188,6 +196,21 @@ LRESULT CPlannerAppDlg::OnRefreshTask(WPARAM wParam, LPARAM lParam) {
 	return 0;
 }
 
+
+HBRUSH CPlannerAppDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) {
+	if (nCtlColor == CTLCOLOR_STATIC || nCtlColor == CTLCOLOR_DLG)
+	{
+		pDC->SetBkMode(TRANSPARENT);
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	}
+
+	return CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+}
+
+BOOL CPlannerAppDlg::OnEraseBkgnd(CDC* pDC) {
+	return TRUE;
+}
+
 void CPlannerAppDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
@@ -200,16 +223,6 @@ void CPlannerAppDlg::OnSysCommand(UINT nID, LPARAM lParam)
 		CDialogEx::OnSysCommand(nID, lParam);
 	}
 }
-
-
-//BOOL CPlannerAppDlg::OnEraseBkgnd(CDC* pDC) {
-//	CRect rect;
-//	GetClientRect(rect);
-//	CBrush brush(RGB(255, 217, 179));
-//	pDC->FillRect(&rect, &brush);
-//	return TRUE;
-//}
-
 
 BOOL CPlannerAppDlg::ConnectToDatabase() {
 	try
@@ -399,48 +412,47 @@ void CPlannerAppDlg::OnTimer(UINT_PTR nIDEvent) {
 }
 
 void CPlannerAppDlg::ShowNotification(const CString& message) {
-	m_NotifyIconData.uFlags = NIF_INFO;
-	wcscpy_s(m_NotifyIconData.szInfo, message);
-	wcscpy_s(m_NotifyIconData.szInfoTitle, L"Upcoming task");
-	m_NotifyIconData.dwInfoFlags = NIF_INFO;
-	Shell_NotifyIcon(NIM_MODIFY, &m_NotifyIconData);
+	m_notifyIconData.uFlags = NIF_INFO;
+	wcscpy_s(m_notifyIconData.szInfo, message);
+	wcscpy_s(m_notifyIconData.szInfoTitle, L"Upcoming task");
+	m_notifyIconData.dwInfoFlags = NIF_INFO;
+	Shell_NotifyIcon(NIM_MODIFY, &m_notifyIconData);
 }
 
 void CPlannerAppDlg::OnPaint()
 {
-	if (IsIconic())
-	{
-		CPaintDC dc(this); // device context for painting
+	CPaintDC dc(this);
 
-		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
+	Graphics graphics(dc.m_hDC);
+	graphics.SetInterpolationMode(InterpolationModeHighQualityBicubic);
 
-		// Center icon in client rectangle
-		int cxIcon = GetSystemMetrics(SM_CXICON);
-		int cyIcon = GetSystemMetrics(SM_CYICON);
-		CRect rect;
-		GetClientRect(&rect);
-		int x = (rect.Width() - cxIcon + 1) / 2;
-		int y = (rect.Height() - cyIcon + 1) / 2;
+	CRect rect;
+	GetClientRect(&rect);
 
-		Gdiplus::Graphics graphis(dc.m_hDC);
-		Gdiplus::Image image(L"res\\above-art-background-black.png");
+	Gdiplus::Image image(L"res\\img_bg.jpg");
+	if (image.GetWidth() > 0 && image.GetHeight() > 0) {
+		/*float xScale = static_cast<float>(rect.Width()) / image.GetWidth();
+		float yScale = static_cast<float>(rect.Height()) / image.GetHeight();
+		float scale = min(xScale, yScale);
 
-		graphis.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
-		graphis.DrawImage(&image, 0, 0, rect.Width(), rect.Height());
+		int scaledWidth = static_cast<int>(image.GetWidth() * scale);
+		int scaledHeight = static_cast<int>(image.GetHeight() * scale);
 
-		// Draw the icon
-		dc.DrawIcon(x, y, m_hIcon);
+		int xOffset = (rect.Width() - scaledWidth) / 2;
+		int yOffset = (rect.Height() - scaledHeight) / 2;*/
+
+		graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+		graphics.DrawImage(&image, 0, 0, rect.Width(), rect.Height());
 	}
-	else
-	{
-		CDialogEx::OnPaint();
+	else {
+		AfxMessageBox(_T("Failed to load image"));
 	}
 }
 
 void CPlannerAppDlg::OnDestroy() {
 	CDialogEx::OnDestroy();
 
-	Shell_NotifyIcon(NIM_DELETE, &m_NotifyIconData);
+	Shell_NotifyIcon(NIM_DELETE, &m_notifyIconData);
 
 	KillTimer(TIMER_CHECK_NOTIFICATIONS);
 }

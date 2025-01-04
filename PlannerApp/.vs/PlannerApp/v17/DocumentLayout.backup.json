@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerAppDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerAppDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 )$  \u0022     ",
+      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerApp.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 )$  \u0022     "
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\CEditTaskDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,20 +23,8 @@
       "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\CAddTaskDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u00AD )$  \u0022     ",
-      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerApp.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u00AD )$  \u0022     "
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\CEditTaskDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerAppDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D36996DD-3059-4336-9CAE-08C58BB1F0CE}|PlannerApp\\PlannerApp.vcxproj|solutionrelative:PlannerApp\\PlannerAppDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,79 +66,79 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "PlannerApp.rc - IDD_PLANNERAPP_DIALOG - Dialog",
+              "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc",
+              "RelativeDocumentMoniker": "PlannerApp\\PlannerApp.rc",
+              "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc - IDD_PLANNERAPP_DIALOG - Dialog",
+              "RelativeToolTip": "PlannerApp\\PlannerApp.rc - IDD_PLANNERAPP_DIALOG - Dialog",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-01-03T23:41:33.36Z",
+              "EditorCaption": " - IDD_PLANNERAPP_DIALOG - Dialog"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CEditTaskDlg.h",
+              "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.h",
+              "RelativeDocumentMoniker": "PlannerApp\\CEditTaskDlg.h",
+              "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.h",
+              "RelativeToolTip": "PlannerApp\\CEditTaskDlg.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-03T23:14:08.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CAddTaskDlg.cpp",
               "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CAddTaskDlg.cpp",
               "RelativeDocumentMoniker": "PlannerApp\\CAddTaskDlg.cpp",
               "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CAddTaskDlg.cpp",
               "RelativeToolTip": "PlannerApp\\CAddTaskDlg.cpp",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGMAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-03T20:45:30.228Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlannerApp.rc - IDD_EDIT_TASK_DIALOG - Dialog",
-              "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc",
-              "RelativeDocumentMoniker": "PlannerApp\\PlannerApp.rc",
-              "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerApp.rc - IDD_EDIT_TASK_DIALOG - Dialog",
-              "RelativeToolTip": "PlannerApp\\PlannerApp.rc - IDD_EDIT_TASK_DIALOG - Dialog",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-01-03T20:30:59.354Z",
-              "EditorCaption": " - IDD_EDIT_TASK_DIALOG - Dialog"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CEditTaskDlg.cpp",
               "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.cpp",
               "RelativeDocumentMoniker": "PlannerApp\\CEditTaskDlg.cpp",
               "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.cpp",
               "RelativeToolTip": "PlannerApp\\CEditTaskDlg.cpp",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAUwGYAAADKAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAI8AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-03T13:20:23.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "PlannerAppDlg.h",
               "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.h",
               "RelativeDocumentMoniker": "PlannerApp\\PlannerAppDlg.h",
               "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.h",
               "RelativeToolTip": "PlannerApp\\PlannerAppDlg.h",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-03T20:07:43.75Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "PlannerAppDlg.cpp",
               "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.cpp",
               "RelativeDocumentMoniker": "PlannerApp\\PlannerAppDlg.cpp",
               "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\PlannerAppDlg.cpp",
               "RelativeToolTip": "PlannerApp\\PlannerAppDlg.cpp",
-              "ViewState": "AgIAAEcBAAAAAAAAAAAAAEwBAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAALAAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-03T19:59:15.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CEditTaskDlg.h",
-              "DocumentMoniker": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.h",
-              "RelativeDocumentMoniker": "PlannerApp\\CEditTaskDlg.h",
-              "ToolTip": "C:\\Users\\Angel\\source\\repos\\Planner_App\\PlannerApp\\PlannerApp\\CEditTaskDlg.h",
-              "RelativeToolTip": "PlannerApp\\CEditTaskDlg.h",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAABsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-03T11:07:42.557Z",
               "EditorCaption": ""
             }
           ]

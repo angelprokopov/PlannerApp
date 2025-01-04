@@ -104,5 +104,11 @@
     <Image Include="res\edit_task.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\images.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\img_bg.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

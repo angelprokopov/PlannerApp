@@ -95,15 +95,19 @@ void CEditTaskDlg::OnBtnClickedSave() {
 	try
 	{
 		if (!m_db.IsOpen()) {
-			AfxMessageBox(_T(""));
+			m_db.OpenEx(_T("DSN=PlannerDSN"), CDatabase::noOdbcDialog);
+		}
+		else {
+			AfxMessageBox(_T("Database connection is not open"));
 			return;
 		}
 
 		CString updateQuery;
-		updateQuery.Format(_T("update Tasks set Title = '%s, Category = '%s', DueDate = '%s', Description = '%s' where TaskId = %d"), updatedTitle, updatedCategory, updatedDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), updatedDescription, m_TaskId);
+		updateQuery.Format(_T("update Tasks set Title = '%s', Category = '%s', DueDate = '%s', Description = '%s' where TaskId = %d"), updatedTitle, updatedCategory, updatedDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), updatedDescription, m_TaskId);
 
 		m_db.ExecuteSQL(updateQuery);
 
+		AfxMessageBox(_T("Task updated successfully"));
 		CDialogEx::OnOK();
 	}
 	catch (CDBException* ex)
