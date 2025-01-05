@@ -102,11 +102,13 @@ void CEditTaskDlg::OnBtnClickedSave() {
 			return;
 		}
 
+		m_db.BeginTrans();
+
 		CString updateQuery;
 		updateQuery.Format(_T("update Tasks set Title = '%s', Category = '%s', DueDate = '%s', Description = '%s' where TaskId = %d"), updatedTitle, updatedCategory, updatedDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), updatedDescription, m_TaskId);
 
 		m_db.ExecuteSQL(updateQuery);
-
+		m_db.CommitTrans();
 		AfxMessageBox(_T("Task updated successfully"));
 		CDialogEx::OnOK();
 	}

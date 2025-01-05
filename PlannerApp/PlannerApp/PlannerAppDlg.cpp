@@ -104,6 +104,24 @@ BOOL CPlannerAppDlg::OnInitDialog()
 	GdiplusStartupInput gdiplusStartInput;
 	GdiplusStartup(&m_gdiplusToken, &gdiplusStartInput, nullptr);
 
+	CRect rect;
+	m_TaskListCtrl.GetWindowRect(&rect);
+	ScreenToClient(&rect);
+	/*m_addButton.GetWindowRect(&rect);
+	rect.right = rect.left + 150;
+	rect.bottom = rect.top + 70;
+	m_addButton.MoveWindow(&rect);
+
+	m_editButton.GetWindowRect(&rect);
+	rect.right = rect.left + 150;
+	rect.bottom = rect.top + 70;
+	m_editButton.MoveWindow(&rect);
+
+	m_deleteButton.GetWindowRect(&rect);
+	rect.right = rect.left + 150;
+	rect.bottom = rect.top + 70;
+	m_deleteButton.MoveWindow(&rect);*/
+
 	// Add "About..." menu item to system menu.
 
 	// IDM_ABOUTBOX must be in the system command range.
@@ -136,17 +154,46 @@ BOOL CPlannerAppDlg::OnInitDialog()
 		LoadTasksFromDatabase();
 	}
 
-	// Load images
+	
 	try
 	{
+		// Load images
 		m_AddImage.Load(_T("res\\img\\add.png"));
-		m_addButton.SetImage(m_AddImage);
-
 		m_EditImage.Load(_T("res\\img\\edit.png"));
-		m_editButton.SetImage(m_EditImage);
-
 		m_DeleteImage.Load(_T("res\\img\\delete.png"));
+
+		int buttonWidth = 160;
+		int buttonHeight = 70;
+		int buttonSpacing = 14;
+
+		int xPos = rect.right + 10;
+		int yPos = rect.top;
+
+		m_addButton.m_bTransparent = TRUE;
+		m_editButton.m_bTransparent = TRUE;
+		m_deleteButton.m_bTransparent = TRUE;
+
+		m_addButton.SetWindowPos(NULL, xPos, yPos, buttonWidth, buttonHeight, SWP_NOZORDER);
+		m_addButton.SetImage(m_AddImage);	
+		m_addButton.SetFaceColor(RGB(255, 255, 255),TRUE);
+		m_addButton.SetTextColor(RGB(179, 89, 0));
+		m_addButton.SetWindowText(_T("Add new task"));
+
+		yPos += buttonHeight + buttonSpacing;
+
+		m_editButton.SetWindowPos(NULL, xPos, yPos, buttonWidth, buttonHeight, SWP_NOZORDER);
+		m_editButton.SetImage(m_EditImage);
+		m_editButton.SetFaceColor(RGB(255, 255, 255),TRUE);
+		m_editButton.SetTextColor(RGB(179, 89, 0));
+		m_editButton.SetWindowText(_T("Edit task"));
+
+		yPos += buttonHeight + buttonSpacing;
+
+		m_deleteButton.SetWindowPos(NULL, xPos, yPos, buttonWidth, buttonHeight, SWP_NOZORDER);
 		m_deleteButton.SetImage(m_DeleteImage);
+		m_deleteButton.SetFaceColor(RGB(255, 255, 255),TRUE);
+		m_deleteButton.SetTextColor(RGB(179, 89, 0));
+		m_deleteButton.SetWindowText(_T("Delete task"));
 	}
 	catch (CFileException* ex)
 	{
@@ -154,19 +201,6 @@ BOOL CPlannerAppDlg::OnInitDialog()
 		ex->Delete();
 		return FALSE;
 	}
-
-	m_addButton.SetFaceColor(RGB(0, 120, 215));
-	m_addButton.SetTextColor(RGB(179, 89, 0));
-	m_addButton.SetWindowText(_T("Add new task"));
-
-	m_editButton.SetFaceColor(RGB(0, 120, 215));
-	m_editButton.SetTextColor(RGB(179, 89, 0));
-	m_editButton.SetWindowText(_T("Edit task"));
-
-	m_deleteButton.SetFaceColor(RGB(0, 120, 215));
-	m_deleteButton.SetTextColor(RGB(179, 89, 0));
-	m_deleteButton.SetWindowText(_T("Delete task"));
-
 
 	memset(&m_notifyIconData, 0, sizeof(m_notifyIconData));
 	m_notifyIconData.cbSize = sizeof(NOTIFYICONDATA);
@@ -208,6 +242,12 @@ HBRUSH CPlannerAppDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) {
 }
 
 BOOL CPlannerAppDlg::OnEraseBkgnd(CDC* pDC) {
+	CDialogEx::OnEraseBkgnd(pDC);
+	
+	CRect rect;
+	GetClientRect(&rect);
+
+
 	return TRUE;
 }
 
@@ -405,11 +445,12 @@ void CPlannerAppDlg::LoadTasksFromDatabase() {
 
 void CPlannerAppDlg::OnTimer(UINT_PTR nIDEvent) {
 	if (nIDEvent == TIMER_CHECK_NOTIFICATIONS) {
-
+		LoadTasksFromDatabase();
 	}
 
 	CDialogEx::OnTimer(nIDEvent);
 }
+
 
 void CPlannerAppDlg::ShowNotification(const CString& message) {
 	m_notifyIconData.uFlags = NIF_INFO;
