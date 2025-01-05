@@ -22,6 +22,19 @@
 
 ---
 
+## 🖼️ Screenshots
+
+### **Add Task Dialog**
+![Add Task Dialog](https://github.com/user-attachments/assets/3a1ee088-0f76-48ac-bfc8-3a9f21e239d7)
+
+
+### **Edit Task Dialog**
+![Edit Task Dialog](https://github.com/user-attachments/assets/ac768993-86e1-4af3-bf5a-2f77456aa635)
+
+
+
+
+
 ## 🛠️ Technologies Used
 
 - **Programming Language**: C++
