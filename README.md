@@ -1,4 +1,4 @@
-![add_task_dialog](https://github.com/user-attachments/assets/6e2b7128-8e5b-4156-b0a9-858b07d7ad00)# Planner App
+# Planner App
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-green)
 ![Framework](https://img.shields.io/badge/Framework-MFC-orange)
@@ -27,16 +27,12 @@
 ### **Main Window**
 ![Main Window](https://github.com/user-attachments/assets/ab5e29ce-7bb8-488c-9f51-fd48cc2d9ff6)
 
-
 ### **Add Task Dialog**
 ![Add Task Dialog](https://github.com/user-attachments/assets/79306793-5c7a-4c9f-ad62-40169322965f)
 
 
-
 ### **Edit Task Dialog**
 ![Edit Task Dialog](https://github.com/user-attachments/assets/cba9c63b-b1c7-471d-bfc7-844588b3fb6b)
-
-
 
 
 
