@@ -24,12 +24,15 @@
 
 ## 🖼️ Screenshots
 
+### **Main Window**
+![Main Window](res/screenshots/main_window.png)
+
 ### **Add Task Dialog**
-![Add Task Dialog](https://github.com/user-attachments/assets/3a1ee088-0f76-48ac-bfc8-3a9f21e239d7)
+![Add Task Dialog](res/screenshots/add_task_dialog.png)
 
 
 ### **Edit Task Dialog**
-![Edit Task Dialog](https://github.com/user-attachments/assets/ac768993-86e1-4af3-bf5a-2f77456aa635)
+![Edit Task Dialog](res/screenshots/edt_task_dialog.png)
 
 
 
