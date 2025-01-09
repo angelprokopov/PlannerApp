@@ -43,6 +43,16 @@ HBRUSH CEditTaskDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) {
 BOOL CEditTaskDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 
+	CDateTimeCtrl* pDateTimeCtrl = (CDateTimeCtrl*)GetDlgItem(IDC_EDIT_DUEDATE);
+
+	if (pDateTimeCtrl != nullptr) {
+		pDateTimeCtrl->ModifyStyle(0, DTS_SHOWNONE);
+		pDateTimeCtrl->SetFormat(_T("yyyy-MM-dd HH:mm:ss"));
+	}
+	else {
+		AfxMessageBox(_T("DateTime picker control not found"));
+	}
+	
 	m_labelFont.CreateFont(18, 0, 0, 0, FW_BOLD, FALSE, FALSE, 0, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Segoe UI"));
 
 	GetDlgItem(IDC_TITLE_LABEL)->SetFont(&m_labelFont);
@@ -84,6 +94,7 @@ void CEditTaskDlg::OnBtnClickedSave() {
 	GetDlgItemText(IDC_EDIT_DESCRIPTION, updatedDescription);
 
 	CDateTimeCtrl* pDateCtrl = (CDateTimeCtrl*)GetDlgItem(IDC_EDIT_DUEDATE);
+	
 	pDateCtrl->GetTime(updatedDueDate);
 
 	if (updatedTitle.IsEmpty())
@@ -92,30 +103,36 @@ void CEditTaskDlg::OnBtnClickedSave() {
 		return;
 	}
 
+	CString dueDateString;
+	if (updatedDueDate.GetStatus() == COleDateTime::valid) {
+		dueDateString = updatedDueDate.Format(_T("%Y-%m-%d %H:%M:%S"));
+	}
+	else {
+		dueDateString = _T("NULL");
+	}
+
 	try
 	{
 		if (!m_db.IsOpen()) {
 			m_db.OpenEx(_T("DSN=PlannerDSN"), CDatabase::noOdbcDialog);
 		}
-		else {
-			AfxMessageBox(_T("Database connection is not open"));
-			return;
-		}
 
 		m_db.BeginTrans();
 
 		CString updateQuery;
-		updateQuery.Format(_T("update Tasks set Title = '%s', Category = '%s', DueDate = '%s', Description = '%s' where TaskId = %d"), updatedTitle, updatedCategory, updatedDueDate.Format(_T("%d-%m-%Y %H:%M:%S")), updatedDescription, m_TaskId);
+		updateQuery.Format(_T("update Tasks set Title = '%s', Category = '%s', DueDate = '%s', Description = '%s' WHERE TaskId = %s"), updatedTitle, updatedCategory, dueDateString, updatedDescription, m_TaskId);
 
 		m_db.ExecuteSQL(updateQuery);
 		m_db.CommitTrans();
+
 		AfxMessageBox(_T("Task updated successfully"));
 		CDialogEx::OnOK();
 	}
-	catch (CDBException* ex)
+	catch (CDBException* e)
 	{
-		AfxMessageBox(ex->m_strError);
-		ex->Delete();
+		m_db.Rollback();
+		AfxMessageBox(e->m_strError);
+		e->Delete();
 	}
 }
 

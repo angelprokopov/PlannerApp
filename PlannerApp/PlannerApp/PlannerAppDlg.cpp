@@ -75,6 +75,7 @@ BEGIN_MESSAGE_MAP(CPlannerAppDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_ERASEBKGND()
 	ON_WM_PAINT()
+	ON_WM_TIMER()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDC_ADD_TASK, &CPlannerAppDlg::OnBtnClickedAddTask)
@@ -142,7 +143,7 @@ BOOL CPlannerAppDlg::OnInitDialog()
 		}
 	}
 
-	m_TaskListCtrl.InsertColumn(0, _T("Task Id"), LVCFMT_LEFT, 60);
+	m_TaskListCtrl.InsertColumn(0, _T("TaskId"), LVCFMT_LEFT, 60);
 	m_TaskListCtrl.InsertColumn(1, _T("Title"), LVCFMT_LEFT, 150);
 	m_TaskListCtrl.InsertColumn(2, _T("Category"), LVCFMT_LEFT, 100);
 	m_TaskListCtrl.InsertColumn(3, _T("DueDate"), LVCFMT_LEFT, 120);
@@ -150,8 +151,14 @@ BOOL CPlannerAppDlg::OnInitDialog()
 
 	m_TaskListCtrl.SetExtendedStyle(m_TaskListCtrl.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
 
-	if (ConnectToDatabase()) {
+	try
+	{
+		ConnectToDatabase();
 		LoadTasksFromDatabase();
+	}
+	catch (const std::exception&)
+	{
+		
 	}
 
 	
@@ -264,26 +271,25 @@ void CPlannerAppDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-BOOL CPlannerAppDlg::ConnectToDatabase() {
+void CPlannerAppDlg::ConnectToDatabase() {
 	try
 	{
 		if (!m_db.IsOpen()) {
 			m_db.OpenEx(_T("DSN=PlannerDSN"), CDatabase::noOdbcDialog);
 		}
-		return true;
 	}
 	catch (CDBException* ex)
 	{
 		AfxMessageBox(ex->m_strError);
 		ex->Delete();
-		return false;
+		throw;
 	}
 }
 
 void CPlannerAppDlg::OnBtnClickedAddTask() {
-	CAddTaskDlg addTaskDlg;
+	CAddTaskDlg addTaskDlg(this);
 	if (addTaskDlg.DoModal() == IDOK) {
-		AfxMessageBox(_T(""));
+		LoadTasksFromDatabase();
 	}
 	else {
 		AfxMessageBox(_T("Add task canceled"));
@@ -445,19 +451,80 @@ void CPlannerAppDlg::LoadTasksFromDatabase() {
 
 void CPlannerAppDlg::OnTimer(UINT_PTR nIDEvent) {
 	if (nIDEvent == TIMER_CHECK_NOTIFICATIONS) {
-		LoadTasksFromDatabase();
+		CheckForNotification();
 	}
 
 	CDialogEx::OnTimer(nIDEvent);
 }
 
 
-void CPlannerAppDlg::ShowNotification(const CString& message) {
+void CPlannerAppDlg::ShowNotification(const CString& title, const CString& dueDate) {
 	m_notifyIconData.uFlags = NIF_INFO;
-	wcscpy_s(m_notifyIconData.szInfo, message);
-	wcscpy_s(m_notifyIconData.szInfoTitle, L"Upcoming task");
-	m_notifyIconData.dwInfoFlags = NIF_INFO;
+	wcscpy_s(m_notifyIconData.szInfo, 256, _T("The task is due soon:") + title + _T("at") + dueDate);
+	wcscpy_s(m_notifyIconData.szInfoTitle, 64, L"Task reminder");
+	m_notifyIconData.dwInfoFlags = NIF_ICON;
+
 	Shell_NotifyIcon(NIM_MODIFY, &m_notifyIconData);
+}
+
+void CPlannerAppDlg::CheckForNotification() {
+	try
+	{
+		if (!m_db.IsOpen()) {
+			ConnectToDatabase();
+		}
+
+		COleDateTime currentTime = COleDateTime::GetCurrentTime();
+		COleDateTime thresholdTime = currentTime + COleDateTimeSpan(0, 0, 30, 0);
+
+		CString query;
+		query.Format(_T("select TaskId, Title, format(DueDate, 'yyyy-MM-dd HH:mm:ss') as DueDate from Tasks where DueDate is not null"));
+
+		CRecordset recordSet(&m_db);
+		recordSet.Open(CRecordset::forwardOnly, query);
+
+		while (!recordSet.IsEOF()) {
+			CString taskId,title, dueDateString;
+			COleDateTime dueDate;
+
+			try
+			{
+				recordSet.GetFieldValue(_T("TaskId"), taskId);
+				recordSet.GetFieldValue(_T("Title"), title);
+				recordSet.GetFieldValue(_T("DueDate"), dueDateString);
+
+
+				int dotPos = dueDateString.ReverseFind('.');
+				if (dotPos != -1) {
+					dueDateString = dueDateString.Left(dotPos);
+				}
+				dueDateString.Replace(_T("T"), _T(" "));
+
+
+				if (!dueDate.ParseDateTime(dueDateString)) {
+					AfxMessageBox(_T("Failed to parse DueDate"));
+					recordSet.MoveNext();
+					continue;
+				}
+
+				if (dueDate >= currentTime && dueDate <= thresholdTime) {
+					ShowNotification(title, dueDate.Format(_T("%Y-%m-%d %H:%M:%S")));
+				}
+			}
+			catch (CDBException* e)
+			{
+				AfxMessageBox(_T("Database error while retrieving tasks: ") + e->m_strError);
+				e->Delete();
+			}
+			
+			recordSet.MoveNext();
+		}
+	}
+	catch (CDBException* ex)
+	{
+		AfxMessageBox(_T("Database error: ") + ex->m_strError);
+		ex->Delete();
+	}
 }
 
 void CPlannerAppDlg::OnPaint()

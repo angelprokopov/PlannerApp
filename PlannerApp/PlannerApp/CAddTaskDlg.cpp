@@ -35,6 +35,10 @@ END_MESSAGE_MAP()
 
 BOOL CAddTaskDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
+
+	CDateTimeCtrl* pDateTimeCtrl = (CDateTimeCtrl*)GetDlgItem(IDC_TASK_DUEDATE);
+	pDateTimeCtrl->ModifyStyle(0, DTS_SHOWNONE);
+	pDateTimeCtrl->SetFormat(_T("yyyy-MM-dd HH:mm:ss"));
 	
 	m_labelFont.CreateFont(18, 0, 0, 0, FW_BOLD, FALSE, FALSE, 0, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Segoe UI"));
 
@@ -97,7 +101,7 @@ void CAddTaskDlg::OnBtnClickedSave() {
 	{
 		CString query;
 		query.Format(_T("insert into Tasks (Title, Category, DueDate, Description) values ('%s','%s','%s','%s');"),
-			title,category,dueDate.Format(_T("%d-%m-%Y %H:%M:%S")), description);
+			title,category,dueDate.Format(_T("%Y-%m-%d %H:%M:%S")), description);
 
 		m_db.ExecuteSQL(query);
 

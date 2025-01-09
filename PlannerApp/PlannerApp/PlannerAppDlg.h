@@ -23,7 +23,7 @@ class CPlannerAppDlg : public CDialogEx
 public:
 	CPlannerAppDlg(CWnd* pParent = nullptr);	// standard constructor
 	virtual ~CPlannerAppDlg();
-	afx_msg BOOL ConnectToDatabase();
+	afx_msg void ConnectToDatabase();
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_PLANNERAPP_DIALOG };
@@ -69,7 +69,8 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg HBRUSH OnCtlColor(CDC* pDc, CWnd* pWnd, UINT nCtlColor);
 	afx_msg LRESULT OnRefreshTask(WPARAM wParam, LPARAM lParam);
-	afx_msg void ShowNotification(const CString& message);
+	afx_msg void ShowNotification(const CString& title, const CString& dueDate);
+	afx_msg void CheckForNotification();
 	afx_msg void OnBtnClickedAddTask();
 	afx_msg void OnBtnClickedEditTask();
 	afx_msg void OnBtnClickedDeleteTask();

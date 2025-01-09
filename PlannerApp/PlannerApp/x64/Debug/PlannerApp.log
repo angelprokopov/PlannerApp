@@ -6,6 +6,7 @@
        C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Microsoft.Common.props(84,119): message : Property 'MSBuildUserExtensionsPath' with value 'C:\Users\Angel\AppData\Local\Microsoft\MSBuild' expanded from the environment.
        Search paths being used for $(MSBuildExtensionsPath) are C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild;$(MSBuildProgramFiles32)\MSBuild
        Trying to import C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\$(MSBuildToolsVersion)\Imports\Microsoft.Common.props\ImportBefore\* using extensions path C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild
+       Assembly loaded during Evaluation: Microsoft.IO.Redist, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51 (location: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.IO.Redist.dll, MVID: cb1d70cb-2531-4fb6-9948-8c7596f06196, AppDomain: [Default])
        C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Imports\Microsoft.Common.props\ImportBefore\Microsoft.NuGet.ImportBefore.props(14,5): message : Property 'VisualStudioVersion' with value '17.0' expanded from the environment.
        The "Configuration" property is a global property, and cannot be modified.
        Search paths being used for $(MSBuildExtensionsPath) are C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild;$(MSBuildProgramFiles32)\MSBuild
@@ -17,6 +18,7 @@
        Property reassignment: $(UseDebugLibraries)="true" (previous value: "false") at C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj (46,5)
        Property reassignment: $(CharacterSet)="Unicode" (previous value: "NotSet") at C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj (48,5)
        Property reassignment: $(UseOfMfc)="Dynamic" (previous value: "false") at C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj (49,5)
+       Assembly loaded during Evaluation: Microsoft.Build.Utilities.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (location: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Build.Utilities.Core.dll, MVID: d3dada43-c2e6-46d8-98a7-d20c6325ad83, AppDomain: [Default])
        C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.ToolsetLocation.props(73,32): message : Property 'PROCESSOR_ARCHITECTURE' with value 'AMD64' expanded from the environment.
        Property reassignment: $(WindowsSdkDir_10)="C:\Program Files (x86)\Windows Kits\10\" (previous value: "") at C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.props (18,5)
        Property reassignment: $(NETFXKitsDir)="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\" (previous value: "") at C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.props (41,5)
@@ -782,6 +784,7 @@
              AfterRebuild;
            ;
            ") at C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets (540,5)
+       Assembly loaded during Evaluation: System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (location: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\System.Collections.Immutable.dll, MVID: 8448ed54-b238-40d8-a464-bff29b2d85b9, AppDomain: [Default])
        Overriding target "GenerateTargetFrameworkMonikerAttribute" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GenerateTargetFrameworkMonikerAttribute" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets".
        Overriding target "Build" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "Build" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets".
        Overriding target "Rebuild" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "Rebuild" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets".
@@ -822,7 +825,7 @@
        Overriding target "GetTargetPathWithTargetPlatformMoniker" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GetTargetPathWithTargetPlatformMoniker" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets".
        The target "CompileDesignTime" listed in a BeforeTargets attribute at "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VisualStudio\WebTools.Aspire\Microsoft.WebTools.Aspire.targets (44,11)" does not exist in the project, and will be ignored.
        The target "CompileDesignTime" listed in a BeforeTargets attribute at "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VisualStudio\WebTools.Aspire\Microsoft.WebTools.Aspire.targets (57,11)" does not exist in the project, and will be ignored.
-Build started 1/5/2025 3:58:29 PM.
+Build started 1/9/2025 11:04:07 PM.
 Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj" on node 2 (Build target(s)).
      1>Target "EnableIntermediateOutputPathMismatchWarning" skipped, due to false condition; ('$(RestoreProjectStyle)' == 'PackageReference') was evaluated as ('' == 'PackageReference').
      1>Target "_CheckForInvalidConfigurationAndPlatform" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj" (target "SetTelemetryEnvironmentVariables" depends on it):
@@ -848,10 +851,10 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
      1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj" (target "Build" depends on it):
        Using "SetEnv" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "SetEnv"
-         VSTEL_SolutionSessionID={5BFE3D3C-8BBE-4A91-9B45-C02A36E8F9FF}
+         VSTEL_SolutionSessionID={C7961CC5-97C2-4BFD-984C-73CB3740B5B7}
        Done executing task "SetEnv".
        Task "SetEnv"
-         VSTEL_CurrentSolutionBuildID=830870993
+         VSTEL_CurrentSolutionBuildID=1366724499
        Done executing task "SetEnv".
        Task "SetEnv"
          VSTEL_ProjectID={D36996DD-3059-4336-9CAE-08C58BB1F0CE}
@@ -1176,8 +1179,8 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
        Task "CL" skipped, due to false condition; ('%(ClCompile.PrecompiledHeader)' == 'Create' and '%(ClCompile.CompilerIteration)' == '' and '$(MultiProcCL)' != 'true') was evaluated as ('Use' == 'Create' and '' == '' and 'false' != 'true').
        Using "CL" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "CL"
-         Using cached input dependency table built from:
-         	C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\x64\Debug\PlannerApp.tlog\CL.read.1.tlog
+         Read Tracking Logs:
+         	x64\Debug\PlannerApp.tlog\CL.read.1.tlog
          Outputs for C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PCH.CPP:
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PCH.OBJ
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.PCH
@@ -1192,7 +1195,18 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.OBJ
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPPDLG.OBJ
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\TASK.OBJ
-         All outputs are up-to-date.
+         PlannerAppDlg.cpp will be compiled because C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerAppDlg.cpp was modified at 1/8/2025 9:26:02 PM.
+         Outputs for C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PLANNERAPPDLG.CPP:
+         	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPPDLG.OBJ
+         Write Tracking Logs:
+         	x64\Debug\PlannerApp.tlog\CL.write.1.tlog
+         Environment Variables passed to tool:
+           VS_UNICODE_OUTPUT=1348
+           SARIF_OUTPUT_PIPE=1476
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\PlannerApp.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt PlannerAppDlg.cpp
+         Tracking command:
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\x64\Debug\PlannerApp.tlog /r C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PLANNERAPPDLG.CPP /b MSBuildConsole_CancelEventc66954f118ad46509b9aa7729996975a  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64\CL.exe"  /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\PlannerApp.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt PlannerAppDlg.cpp
+         PlannerAppDlg.cpp
        Done executing task "CL".
        Task "CL" skipped, due to false condition; ('%(ClCompile.PrecompiledHeader)' != 'Create' and '%(ClCompile.CompileAs)'!='CppModule' and '%(ClCompile.CompilerIteration)' == '' and @(ClCompile) != '' and '$(MultiProcCL)' != 'true') was evaluated as ('Create' != 'Create' and 'CompileAsCpp'!='CppModule' and '' == '' and pch.cpp != '' and 'false' != 'true').
      1>Done building target "ClCompile" in project "PlannerApp.vcxproj".
@@ -1225,10 +1239,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
          	x64\Debug\PlannerApp.tlog\rc.read.1.tlog
          Outputs for C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PLANNERAPP.RC:
          	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.RES
-         PlannerApp.rc will be compiled because C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PLANNERAPP.RC was modified at 1/5/2025 3:58:28 PM.
-         C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0409" /Ix64\Debug\ /nologo /fo"x64\Debug\PlannerApp.res" PlannerApp.rc 
-         Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\x64\Debug\PlannerApp.tlog /r C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\PLANNERAPP.RC /b MSBuildConsole_CancelEvent417cbff410614c3caa7d066d2250a749  /c "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe"  /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0409" /Ix64\Debug\ /nologo /fo"x64\Debug\PlannerApp.res" PlannerApp.rc 
+         All outputs are up-to-date.
        Done executing task "RC".
      1>Done building target "ResourceCompile" in project "PlannerApp.vcxproj".
      1>Target "AfterResourceCompile" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\PlannerApp.vcxproj" (target "_ResourceCompile" depends on it):
@@ -1379,9 +1390,10 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
          	C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\ENTERPRISE\VC\TOOLS\MSVC\14.42.34433\LIB\X64\VCRUNTIMED.LIB
          	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.22621.0\UCRT\X64\UCRTD.LIB
          	C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\ENTERPRISE\VC\TOOLS\MSVC\14.42.34433\BIN\HOSTX64\X64\CVTRES.EXE
-         Source compilation required: input C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.RES is newer than output C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\X64\DEBUG\PLANNERAPP.PDB.
+         	C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\VC143.PDB
+         Source compilation required: input C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPPDLG.OBJ is newer than output C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\X64\DEBUG\PLANNERAPP.PDB.
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1456
+           VS_UNICODE_OUTPUT=1716
          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.exe" /INCREMENTAL /ILK:"x64\Debug\PlannerApp.ilk" /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\Include\Manifest\dpiaware.manifest" /DEBUG:FULL /PDB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.lib" /MACHINE:X64 x64\Debug\PlannerApp.res
          x64\Debug\CAddTaskDlg.obj
          x64\Debug\CEditTaskDlg.obj
@@ -1390,7 +1402,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Angel\source\repo
          x64\Debug\PlannerAppDlg.obj
          x64\Debug\Task.obj
          Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\x64\Debug\PlannerApp.tlog /r "C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\CADDTASKDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\CEDITTASKDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PCH.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.RES|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPPDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\TASK.OBJ" /b MSBuildConsole_CancelEventcad0d7918538443e8aea517eb9fae75f  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.exe" /INCREMENTAL /ILK:"x64\Debug\PlannerApp.ilk" /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\Include\Manifest\dpiaware.manifest" /DEBUG:FULL /PDB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.lib" /MACHINE:X64 x64\Debug\PlannerApp.res
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Angel\source\repos\Planner_App\PlannerApp\PlannerApp\x64\Debug\PlannerApp.tlog /r "C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\CADDTASKDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\CEDITTASKDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PCH.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPP.RES|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\PLANNERAPPDLG.OBJ|C:\USERS\ANGEL\SOURCE\REPOS\PLANNER_APP\PLANNERAPP\PLANNERAPP\X64\DEBUG\TASK.OBJ" /b MSBuildConsole_CancelEvent859e70f755924bfe936c7dfe622e7a68  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.exe" /INCREMENTAL /ILK:"x64\Debug\PlannerApp.ilk" /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.42.34433\Include\Manifest\dpiaware.manifest" /DEBUG:FULL /PDB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Angel\source\repos\Planner_App\PlannerApp\x64\Debug\PlannerApp.lib" /MACHINE:X64 x64\Debug\PlannerApp.res
          x64\Debug\CAddTaskDlg.obj
          x64\Debug\CEditTaskDlg.obj
          x64\Debug\pch.obj
@@ -1684,4 +1696,4 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.43
+Time Elapsed 00:00:00.91
